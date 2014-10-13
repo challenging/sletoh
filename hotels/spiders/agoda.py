@@ -97,6 +97,8 @@ class AgodaSpider(CrawlSpider):
                             time.sleep(2)
                         except StaleElementReferenceException as e:
                             browser.refresh()
+                        except WebDriverException as e:
+                            browser.refresh()
                         except NoSuchElementException as e:
                             maxTries = -1
                             break
