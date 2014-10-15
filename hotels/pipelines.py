@@ -5,10 +5,22 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
+from scrapy import signals
+
 import time
 import jsonlib2 as json
 
-class HotelsPipeline(object):
+class HotelPipeline(object):
+    def __init__(self, settings):
+        pass
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        settings = crawler.settings
+        instance = cls(settings['CUSTOM_SETTINGS_VARIABLE'])
+        crawler.signals.connect(instance.spider_opened, signal=signals.spider_opened)
+        return instance
+
     def spider_opened(self, spider):
         self.file = open("%s.%s.json" %(spider.name, time.strftime("%Y%m%d")), "ab")
 

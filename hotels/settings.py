@@ -13,6 +13,10 @@ BOT_NAME = 'China Happy New Year'
 SPIDER_MODULES = ['hotels.spiders']
 NEWSPIDER_MODULE = 'hotels.spiders'
 
+ITEM_PIPELINES = {
+    "hotels.pipelines.HotelPipeline": 11
+}
+
 DUPEFILTER_CLASS = 'hotels.duplicated_filter.SeenURLFilter'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

@@ -51,7 +51,7 @@ class AgodaSpider(CrawlSpider):
                     browser.get(AgodaSpider.search_url)
                     browser.find_element_by_name("SearchInput").clear()
                     browser.find_element_by_name("SearchInput").send_keys(self.city.decode("utf-8"))
-                    time.sleep(2)
+                    time.sleep(1)
                     browser.find_element_by_class_name("ui-menu-promote").click()
 
                     Select(browser.find_element_by_id("CheckInMonthYear")).select_by_value(flyingDate.strftime("%m-%Y"))
@@ -94,11 +94,13 @@ class AgodaSpider(CrawlSpider):
                                     yield item
 
                             browser.find_element_by_class_name("pager-right").click()
-                            time.sleep(2)
+                            time.sleep(1)
                         except StaleElementReferenceException as e:
                             browser.refresh()
+                            print "1. ", e
                         except WebDriverException as e:
-                            browser.refresh()
+                            maxTries = -1
+                            break
                         except NoSuchElementException as e:
                             maxTries = -1
                             break
