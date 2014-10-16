@@ -1,0 +1,10 @@
+
+*.log
+
+*.json
+
+*.pyc
+
+hotels/settings.pyc
+
+hotels/spiders/agoda.pyc
