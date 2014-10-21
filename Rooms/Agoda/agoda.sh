@@ -23,7 +23,7 @@ do
             ret=$?
             if [ ${ret} -eq 0 ]; then
                 success ${plusDate} ${city} ${log}
-                sleep 2
+                #sleep 2
             else
                 fail ${ret} '${SCRAPY} ${SCRAPY} ${spiderName} -a city="${city}" -a plusDate=${plusDate}'
             fi

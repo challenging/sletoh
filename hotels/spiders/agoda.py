@@ -3,7 +3,7 @@
 import sys, exceptions
 import time, datetime, socket
 
-from hotels.items import AgodaItem
+from hotels.items import AgodaHotel
 from scrapy.contrib.spiders import CrawlSpider
 
 from pyvirtualdisplay import Display
@@ -75,7 +75,7 @@ class AgodaSpider(CrawlSpider):
 
                                     location = center.find_element_by_tag_name("ul").text
 
-                                    item = AgodaItem()
+                                    item = AgodaHotel()
                                     item["city"] = self.city
                                     item["bookingDate"] = flyingDate.strftime("%Y%m%d")
                                     item["name"] = name
