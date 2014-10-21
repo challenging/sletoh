@@ -8,3 +8,5 @@
 hotels/settings.pyc
 
 hotels/spiders/agoda.pyc
+
+*.pyc

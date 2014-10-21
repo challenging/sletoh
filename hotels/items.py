@@ -13,7 +13,7 @@ class HotelsItem(scrapy.Item):
     # name = scrapy.Field()
     pass
 
-class AgodaItem(scrapy.Item):
+class AgodaHotel(scrapy.Item):
     city = scrapy.Field()
     bookingDate = scrapy.Field()
 
@@ -23,3 +23,17 @@ class AgodaItem(scrapy.Item):
     comment = scrapy.Field()
 
     room = scrapy.Field()
+
+class RakutenHotel(scrapy.Item):
+    city = scrapy.Field()
+    bookingDate = scrapy.Field()
+
+    name = scrapy.Field()
+    location = scrapy.Field()
+    star = scrapy.Field()
+    ranking = scrapy.Field()
+    comment = scrapy.Field()
+
+    currency = scrapy.Field()
+    priceMin = scrapy.Field()
+    priceMax = scrapy.Field()
