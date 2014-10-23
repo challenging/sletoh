@@ -56,8 +56,8 @@ class RakutenSpider(CrawlSpider):
                     while True:
                         try:
                             if ui.WebDriverWait(browser, 20).until(lambda broswer: browser.find_element_by_link_text(u"更多飯店") != None):
-                                browser.find_element_by_link_text(u"更多飯店").click()
-                                time.sleep(2)
+                                browser.find_element_by_xpath("//a[@class='btn']").click()
+                                time.sleep(1)
                             else:
                                 break
                         except TimeoutException as e:
