@@ -60,10 +60,10 @@ class AgodaSpider(CrawlSpider):
 
                     browser.find_element_by_class_name("search-form").submit()
 
-                    while True:
+                    miniTries = 3
+                    while miniTries >= 0:
                         try:
                             if ui.WebDriverWait(browser, 10).until(lambda browser: browser.find_element_by_name("hotelInfoPlaceholder")):
-                                #hotels = browser.find_element_by_name("hotelInfoPlaceholder").find_elements_by_tag_name("li")
                                 hotels = browser.find_elements_by_xpath("//section[@class='entry']")
 
                                 for hotel in hotels:
@@ -97,7 +97,7 @@ class AgodaSpider(CrawlSpider):
                             time.sleep(1)
                         except StaleElementReferenceException as e:
                             browser.refresh()
-                            print "1. ", e
+                            miniTries -= 1
                         except WebDriverException as e:
                             maxTries = -1
                             break
