@@ -8,7 +8,8 @@ run(){
 
     for city in $(ls ${which_hotel}/city*.cfg);
     do
-        echo ${scrapy} ${city}
+        city=$(basename ${city})
+        ${scrapy} ${city}
     done
 }
 
